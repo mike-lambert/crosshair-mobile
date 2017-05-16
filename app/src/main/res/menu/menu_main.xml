@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actionRefresh"
+        android:title="Refresh"
+        android:icon="@drawable/reload"
+        app:showAsAction="always"
+        android:menuCategory="container"/>
+    <item
+        android:id="@+id/actionShareApp"
+        android:title="Share"
+        app:showAsAction="always"
+        android:icon="@drawable/share"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+    <item
+        android:id="@+id/actionSettings"
+        android:title="Settings"
+        android:icon="@drawable/settings"/>
+
+</menu>
