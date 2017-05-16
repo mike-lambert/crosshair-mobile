@@ -5,7 +5,9 @@
     tools:context="cyberspacelabs.ru.crosshairmobile.MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
     <android.support.v4.widget.SwipeRefreshLayout
 
         android:layout_width="match_parent"

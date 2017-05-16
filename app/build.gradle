@@ -8,8 +8,8 @@ android {
         applicationId "cyberspacelabs.ru.crosshairmobile"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 18
-        versionName "1.5.18"
+        versionCode 19
+        versionName "1.6.19"
     }
     buildTypes {
         release {
