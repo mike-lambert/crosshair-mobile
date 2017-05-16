@@ -2,6 +2,7 @@ package cyberspacelabs.ru.crosshairmobile.controllers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -19,9 +20,6 @@ import cyberspacelabs.ru.crosshairmobile.services.GeoIpLocationService;
 import cyberspacelabs.ru.crosshairmobile.services.NativeDiscoveryService;
 import cyberspacelabs.ru.crosshairmobile.ui.ServerListAdapter;
 
-/**
- * Created by mike on 16.05.17.
- */
 public class ServerListController implements DiscoveryController, DiscoveryStatusListener {
     private ServerBrowserPresentation browserView;
     private Activity context;
@@ -35,7 +33,7 @@ public class ServerListController implements DiscoveryController, DiscoveryStatu
     private final AtomicLong threadCounter = new AtomicLong(0);
     private final ExecutorService threadPool = Executors.newCachedThreadPool(new ThreadFactory() {
         @Override
-        public Thread newThread(Runnable r) {
+        public Thread newThread(@NonNull Runnable r) {
             Thread t = new Thread(r);
             t.setName(ServerListController.class.getSimpleName() + "-Worker::" + threadCounter.incrementAndGet());
             t.setDaemon(true);
@@ -109,9 +107,10 @@ public class ServerListController implements DiscoveryController, DiscoveryStatu
             @Override
             public void run() {
                 serverListAdapter.getFilter().filter(browserView.getFilterField().getText().toString());
+                filtered = serverListAdapter.getCount();
+                updateStatusText();
             }
         });
-        updateStatusText();
     }
 
     private void resolveLocations(final List<Server> arrived) {
@@ -150,6 +149,22 @@ public class ServerListController implements DiscoveryController, DiscoveryStatu
     }
 
     private String createStatusText() {
-        return "";
+        StringBuilder result = new StringBuilder();
+        if (pending == 0){
+            result.append("Refresh done.");
+        } else {
+            result.append("Pending ")
+                    .append(pending).append(" of ").append(overall)
+                    .append(" tasks.");
+        }
+        if (discovered == 0){
+            result.append(" No servers found.");
+        } else {
+            result.append(" ").append(discovered).append(" servers found.");
+        }
+        if (filtered > 0){
+            result.append(" ").append(filtered).append(" servers filtered.");
+        }
+        return result.toString();
     }
 }

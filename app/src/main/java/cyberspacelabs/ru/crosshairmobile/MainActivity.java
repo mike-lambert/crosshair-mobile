@@ -1,5 +1,6 @@
 package cyberspacelabs.ru.crosshairmobile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,7 +13,10 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements ServerBrowserPres
     private TextView textStatus;
     private ShareActionProvider shareActionProvider;
     private EditText textFilter;
+    private ImageView iconSearch;
     private ServerListController controller;
 
     @Override
@@ -49,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements ServerBrowserPres
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         controller = ((ApplicationState)getApplication()).getServerListController();
-        controller.setPresentation(this);
 
         listServers = (ListView) findViewById(R.id.listServers);
         container = (SwipeRefreshLayout) findViewById(R.id.layoutServers);
@@ -77,6 +81,16 @@ public class MainActivity extends AppCompatActivity implements ServerBrowserPres
 
             }
         });
+        iconSearch = (ImageView) findViewById(R.id.iconSearch);
+        iconSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textFilter.requestFocusFromTouch();
+                InputMethodManager lManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                lManager.showSoftInput(textFilter, 0);
+            }
+        });
+        controller.setPresentation(this);
     }
 
     @Override
