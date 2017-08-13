@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements ServerBrowserPres
                 return true;
             // action with ID action_settings was selected
             case R.id.actionSettings:
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
 
             default:

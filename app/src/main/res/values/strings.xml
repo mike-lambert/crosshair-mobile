@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Crosshair Mobile</string>
+    <string name="title_activity_settings">Settings</string>
+    <!-- Strings related to Settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_discovery_use_server_description">Use DPMQuery server discovery instead native</string>
+    <string name="pref_discovery_use_server_title">Use discovery server</string>
+    <string name="pref_discovery_server_title">Discovery server location</string>
+    <string name="pref_games_list">Query server for games</string>
 </resources>

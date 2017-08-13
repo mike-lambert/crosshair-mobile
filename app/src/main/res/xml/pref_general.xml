@@ -1,0 +1,64 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Discovery">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="discovery_use_server"
+            android:summary="@string/pref_discovery_use_server_description"
+            android:title="@string/pref_discovery_use_server_title"
+            />
+
+        <EditTextPreference
+            android:capitalize="none"
+            android:inputType="textUri"
+            android:key="discovery_server_address"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_discovery_server_title"
+            android:contentDescription="Enter discovery server address here"
+            android:dependency="discovery_use_server"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Game servers by type">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="game_QUAKE3"
+            android:title="Quake 3 Arena"
+            android:contentDescription="Discover Quake 3 Arena servers"
+            />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="game_OpenArena"
+            android:title="OpenArena"
+            android:contentDescription="Discover OpenArena servers"
+            />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="game_XONOTIC"
+            android:title="Xonotic"
+            android:contentDescription="Discover Xonotic servers"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Master servers">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="server_DPMASTER"
+            android:title="dpmaster.deathmask.net:27950"
+            />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="server_IOQUAKE"
+            android:title="master.ioquake3.org:27950"
+            android:contentDescription="Discover OpenArena servers"
+            />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="server_QUAKE3ARENA"
+            android:title="master.quake3arena.com:27950"
+            android:contentDescription="Discover Xonotic servers"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>
