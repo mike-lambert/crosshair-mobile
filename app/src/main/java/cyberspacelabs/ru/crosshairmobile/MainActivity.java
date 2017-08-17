@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,24 +19,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-
-import cyberspacelabs.ru.crosshairmobile.contracts.DiscoveryService;
-import cyberspacelabs.ru.crosshairmobile.contracts.DiscoveryStatusListener;
-import cyberspacelabs.ru.crosshairmobile.contracts.GeoIpService;
 import cyberspacelabs.ru.crosshairmobile.contracts.ServerBrowserPresentation;
 import cyberspacelabs.ru.crosshairmobile.controllers.ServerListController;
-import cyberspacelabs.ru.crosshairmobile.dto.Server;
-import cyberspacelabs.ru.crosshairmobile.services.GeoIpLocationService;
-import cyberspacelabs.ru.crosshairmobile.services.NativeDiscoveryService;
-import cyberspacelabs.ru.crosshairmobile.ui.ServerListAdapter;
 
 public class MainActivity extends AppCompatActivity implements ServerBrowserPresentation {
     private ListView listServers;

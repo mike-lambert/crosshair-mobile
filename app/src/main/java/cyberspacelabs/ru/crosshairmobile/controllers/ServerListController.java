@@ -1,7 +1,6 @@
 package cyberspacelabs.ru.crosshairmobile.controllers;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -16,8 +15,8 @@ import cyberspacelabs.ru.crosshairmobile.contracts.DiscoveryStatusListener;
 import cyberspacelabs.ru.crosshairmobile.contracts.GeoIpService;
 import cyberspacelabs.ru.crosshairmobile.contracts.ServerBrowserPresentation;
 import cyberspacelabs.ru.crosshairmobile.dto.Server;
+import cyberspacelabs.ru.crosshairmobile.services.factory.DiscoveryServiceFactory;
 import cyberspacelabs.ru.crosshairmobile.services.GeoIpLocationService;
-import cyberspacelabs.ru.crosshairmobile.services.NativeDiscoveryService;
 import cyberspacelabs.ru.crosshairmobile.ui.ServerListAdapter;
 
 public class ServerListController implements DiscoveryController, DiscoveryStatusListener {
@@ -42,7 +41,7 @@ public class ServerListController implements DiscoveryController, DiscoveryStatu
     });
 
     public ServerListController(){
-        discoveryService = new NativeDiscoveryService();
+        discoveryService = DiscoveryServiceFactory.getDiscoveryService();
         discoveryService.setStatusListener(this);
         geoIpService = new GeoIpLocationService();
         filtered = -1;
